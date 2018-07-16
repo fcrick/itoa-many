@@ -1,5 +1,5 @@
 const memory = new WebAssembly.Memory({initial:0})
-const {itoaMany} = require('./index')(memory)
+const {itoaMany} = require('./index')({env:{memory:memory}})
 const decoder = new (require('string_decoder').StringDecoder)('utf8')
 let buffer = memory.buffer
 let dataView = new DataView(buffer, 0, buffer.byteLength)
