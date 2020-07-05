@@ -1,1 +1,1 @@
-export declare function itoa(dest: i32, i: i32): void
+../node_modules/@fcrick/itoa/assembly/index.d.ts

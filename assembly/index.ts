@@ -1,6 +1,9 @@
 
 import {itoa} from './itoa'
 
+// someday hopefully something like this will work:
+// import {itoa} from '@fcrick/itoa/assembly'
+
 export function itoaMany(dest: i32, array: i32): void {
     // argument is a length prefixed array of integers
     let count: i32 = load<i32>(array)
