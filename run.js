@@ -1,6 +1,9 @@
+import itoaManyModule from './index.js'
+import { StringDecoder } from 'string_decoder'
+
 const memory = new WebAssembly.Memory({initial:0})
-const {itoaMany} = require('./index')({env:{memory:memory}})
-const decoder = new (require('string_decoder').StringDecoder)('utf8')
+const {itoaMany} = itoaManyModule({env:{memory:memory}})
+const decoder = new StringDecoder('utf8')
 let buffer = memory.buffer
 let dataView = new DataView(buffer, 0, buffer.byteLength)
 

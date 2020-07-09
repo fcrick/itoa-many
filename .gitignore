@@ -5,3 +5,4 @@ out/
 raw/
 build/
 assembly/*.d.ts
+optimized.wasm.js

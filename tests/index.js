@@ -1,7 +1,8 @@
-const assert = require("assert");
+import assert from 'assert'
+import itoaManyModule from '../index.js'
 
 const memory = new WebAssembly.Memory({initial:1})
-const {itoaMany} = require('..')({env:{memory:memory}})
+const {itoaMany} = itoaManyModule({env:{memory:memory}})
 
 const buffer = memory.buffer
 const dataView = new DataView(buffer, 0, buffer.byteLength)

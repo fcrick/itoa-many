@@ -1,14 +1,10 @@
-const fs = require("fs");
-const compiled = new WebAssembly.Module(fs.readFileSync(__dirname + "/build/optimized.wasm"));
+import wasmBuffer from './optimized.wasm.js'
+const compiled = new WebAssembly.Module(wasmBuffer)
 
-module.exports = function(importObject) {
-    // no idea why this is needed, but it is
-    const thing = {}
-    Object.defineProperty(thing, 'foo', {
-        get: () => new WebAssembly.Instance(compiled, {
-            itoa: require('@fcrick/itoa')({...importObject}),
-            ...importObject
-        }).exports
-    })
-    return thing.foo
+import itoaModule from '@fcrick/itoa'
+
+export default function(imports) {
+    return new WebAssembly.Instance(compiled, {itoa: itoaModule({...imports}),
+        ...imports
+    }).exports
 }
